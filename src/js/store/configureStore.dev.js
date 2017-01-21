@@ -1,17 +1,18 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
-import createLogger from 'redux-logger'
+import createLogger from 'redux-logger' // eslint-disable-line import/no-extraneous-dependencies
 import rootReducer from '../reducers'
-//import DevTools from '../containers/DevTools'
+// import DevTools from '../containers/DevTools'
 
-const configureStore = preloadedState => {
+const configureStore = (preloadedState) => {
   const store = createStore(
     rootReducer,
     preloadedState,
     compose(
-      applyMiddleware(thunk, createLogger())//,
-      //DevTools.instrument()
-    )
+      applyMiddleware(thunk, createLogger()),
+      //,
+      // DevTools.instrument()
+    ),
   )
 
   if (module.hot) {
@@ -26,4 +27,3 @@ const configureStore = preloadedState => {
 }
 
 export default configureStore
-
