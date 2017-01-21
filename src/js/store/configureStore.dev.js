@@ -2,7 +2,6 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger' // eslint-disable-line import/no-extraneous-dependencies
 import rootReducer from '../reducers'
-// import DevTools from '../containers/DevTools'
 
 const configureStore = (preloadedState) => {
   const store = createStore(
@@ -10,8 +9,9 @@ const configureStore = (preloadedState) => {
     preloadedState,
     compose(
       applyMiddleware(thunk, createLogger()),
-      //,
-      // DevTools.instrument()
+      (typeof (window) !== 'undefined' && window.devToolsExtension)
+        ? window.devToolsExtension()
+        : f => f,
     ),
   )
 
