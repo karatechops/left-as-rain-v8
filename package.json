@@ -72,7 +72,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "lint": "./node_modules/.bin/eslint 'src/**/*.js'",
-    "server": "node server/babel-server.js"
+    "dev-server": "node server/babel-server.js"
   },
   "jest": {
     "collectCoverageFrom": [
